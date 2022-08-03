@@ -1,0 +1,84 @@
+{% extends 'basic.html' %}
+{% block title %} Breaking News {%endblock%}
+{% block body %} 
+
+{%load static%}
+<body> 
+
+<!-- Navbar starts here -->
+  <nav class="navbar navbar-expand-lg bg-dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'filter' %}" style="color: rgb(223, 203, 25);"><i style="font-size:24px" class="fa">&#xf112;</i></a>
+      <div class="ml-auto ">
+        <h4 style="color: rgb(223, 203, 25);">Welcome, {{request.user.first_name}}</h4>
+      </div>
+      <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
+    </div>
+  </nav>
+  <!-- Navbar ends here -->
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do your want to continue?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-bs-dismiss="modal">No</button>
+        <a class="link" href="{% url 'logout' %}">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <br>
+  <h2 style="color: rgb(3, 42, 171);"><center><strong>{{string}}</strong></center></h2>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container">
+          <div class="row">
+            {%for i in lst%}
+              <div class="col-sm-12 col-lg-4">
+                <div class="card border border-info mt-4" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5>{{i.0}}</h5>
+                    <a class="btn btn-outline-danger mt-2" href="{{i.1}}" role="button">Read Full Article</a>
+                    
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                          <button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <strong>Description</strong>
+                          </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <strong>{{i.2}}</strong>
+                          </div>
+                        </div>
+                      </div> 
+                    </div>   
+                  </div>
+                </div>
+              </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                  
+</body>
+
+
+
+{%endblock%}

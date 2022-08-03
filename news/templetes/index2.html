@@ -1,0 +1,22 @@
+{%extends 'basic.html'%}
+{% block title %} Breaking News {%endblock%}
+{% block body %} 
+{%load static%}
+<div class="container-fluid mt-4">
+<h1 style="color: rgb(223, 203, 25);"><center>News.com</center></h1>
+</div>
+<body background="https://wallpaperaccess.com/full/1087790.jpg">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="btn btn-outline-primary" href="{% url 'signup' %}" role="button">SignUp <i class="fa fa-registered" style="font-size:24px;color:rgb(255, 225, 0)"></i></a>
+    </li>
+    <li class="nav-item mx-4">
+      <a class="btn btn-outline-primary" href="{% url 'signin' %}" role="button">Login <i class="fa fa-sign-in" style="font-size:24px;color:rgb(255, 225, 0)"></i></a>
+    </li>
+  </ul>
+
+</body>
+
+
+{%endblock%}
+

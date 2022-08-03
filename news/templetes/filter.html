@@ -1,0 +1,88 @@
+{%extends 'basic.html'%}
+{% block title %} Breaking News {%endblock%}
+{% block body %} 
+
+
+<!-- Navbar starts here -->
+<nav class="navbar navbar-expand-lg bg-dark" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}" style="color: rgb(223, 203, 25);"><i style="font-size:24px" class="fa">&#xf112;</i></a>
+        <div class="ml-auto ">
+        <h4 style="color: rgb(223, 203, 25);">Welcome, {{request.user.first_name}}</h4>
+        </div>
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
+    </div>
+</nav>
+  <!-- Navbar ends here -->
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Do your want to continue?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal">No</button>
+          <a class="link" href="{% url 'logout' %}">Yes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+<div class="container-fluid mt-4">
+    <h1 style="color: rgb(3, 42, 171);"><center>News.com</center></h1>
+</div>
+<!--  -->
+<body>
+    <div class="container col-lg-2 mt-4">
+        <form action="{% url 'newspage' %}" method='get'>
+        <div class="form-group">
+            <label style="color: rgb(3, 42, 171);">Country</label><br>
+            <select name="Country" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option value="in">India</option>
+                <option value="us">United States</option>
+                <option value="gb">United Kingdom</option>
+                <option value="gb">United Kingdom</option>
+                <option value="sg">Singapore</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="ca">Canada</option>
+                <option value="ru">Russia</option>
+                <option value="sa">Saudi Arebia</option>
+                <option value="ua">Ukraine</option>
+            </select>  
+            <label style="color: rgb(3, 42, 171);">Category</label><br>
+            <select name="Category" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option value="headlines">Headlines</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+                <option value="technology">Technology</option>
+            </select> 
+            <button class="btn btn-outline-dark btn-lg" type="submit">Go</button>
+        </div>
+        </form>
+
+        <h2 style="color: rgb(3, 42, 171);"><center><strong>OR</strong></center></h2>
+        <!--<hr style="color: rgb(255, 255, 255); width:100%; border-width:20; height:10px;">-->
+        <form action="{% url 'newspage' %}" method='get'>
+        <label style="color: rgb(3, 42, 171);">Key-word Search</label><br>
+        <input class="form-control form-control-lg" type="text" placeholder="Key-Word Search" aria-label=".form-control-lg example" name="search">
+        <br>
+        <button class="btn btn-outline-dark btn-lg" type="submit" name="search_btn" id="kwrd_btn" value="ok">Go</button>
+    </form>
+    </div>
+</body>
+
+
+{%endblock%}
